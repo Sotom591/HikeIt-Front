@@ -4,8 +4,8 @@ import SearchBar from '../components/SearchBar'
 const ExploreContainer = () =>{
 
   return(
-    <div>
-      ExploreContainer
+    <div id="explore-container">
+      < SearchBar />
     </div>
   )
 }
