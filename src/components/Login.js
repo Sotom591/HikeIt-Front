@@ -23,15 +23,15 @@ export default class Login extends Component {
           <div className="header item">
             Login
           </div>
-          <a className="item">
+          <div className="item">
             Username: <input type="text" name="username" onChange={this.handleLogin}></input>
-          </a>
-          <a className="item">
+          </div>
+          <div className="item">
             Password: <input type="text" name="password" onChange={this.handleLogin}></input>
-          </a>
-          <a className="item">
+          </div>
+          <div className="item">
             <input type="submit"></input>
-          </a>
+          </div>
         </div>
       )
     }

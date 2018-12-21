@@ -6,15 +6,18 @@ render(){
     return(
       <div className="ui menu" id="nav-bar">
         <div className="header item">
-          Home
+          HikeIt!
         </div>
-        <a className="item">
+        <a href="http://localhost:3001/" className="item">
+          Home
+        </a>
+        <a href="http://localhost:3001/trails" className="item">
           My Hikes
         </a>
-        <a className="item">
+        <a href="http://localhost:3001/packinglists" className="item">
           Pack It
         </a>
-        <a className="item">
+        <a href="http://localhost:3001/profile" className="item">
           Profile
         </a>
       </div>
