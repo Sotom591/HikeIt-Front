@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     latitude: null,
     longitude: null,
-    error: null
+    error: null,
+    trails: []
   }
 
   componentDidMount(){
@@ -34,14 +35,20 @@ class App extends Component {
   }
 
   fetchTrailsByCoords = () =>{
-    console.log(this.state.latitude, this.state.longitude)
+
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=100&key=${process.env.REACT_APP_API_KEY}`)
+    .then(res => res.json())
+    .then(data => this.setState({
+      trails: data.trails
+    }))
   }
+
   render() {
     return (
       <div className="App">
         < NavBar />
         <Route exact path='/' render={() => < HomeContainer /> } />
-        <Route exact path ='/trails' render={() => < TrailsContainer /> } />
+        <Route exact path ='/trails' render={() => < TrailsContainer trails={this.state.trails}/> } />
         <Route exact path ='/packinglists' render={() => < PackListContainer /> } />
         <Route exact path ='/profile' render={() => < UserContainer /> } />
       </div>

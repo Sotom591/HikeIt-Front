@@ -1,5 +1,5 @@
 import React from 'react'
-import PackList from '../components/PackList'
+// import PackList from '../components/PackList'
 
 const PackListContainer = () =>{
 
