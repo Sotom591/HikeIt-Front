@@ -5,19 +5,16 @@ export default class TrailsCard extends Component {
 render(){
   console.log(this.props.trail)
     return(
-      <div>
-        TrailsCard
+      <div className="ui card" id="trails-card">
+      <a className="image" href="#">
+      <img src={this.props.trail.imgSmall} />
+      </a>
+      <div className="content">
+      <a className="header" href="#">{this.props.trail.name}</a>
+      <div className="meta">
+      </div>
+      </div>
       </div>
     )
   }
 }
-// <div className="ui card" id="trails-container">
-// <a className="image" href="#">
-// <img src="/images/avatar/large/steve.jpg">
-// </a>
-// <div className="content">
-// <a className="header" href="#">Steve Jobes</a>
-// <div className="meta">
-// </div>
-// </div>
-// </div>
