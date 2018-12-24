@@ -6,7 +6,7 @@ const TrailsContainer = (props) =>{
   return(
     <div className="trails-container">
      <h3> Explore </h3>
-      < SortByBar />
+      < SortByBar handleChange={props.handleChange}/>
       < TrailsCardContainer trails={props.trails} />
     </div>
   )
