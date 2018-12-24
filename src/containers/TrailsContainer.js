@@ -1,11 +1,14 @@
 import React from 'react'
 import TrailsCardContainer from './TrailsCardContainer'
-// import SortByBar from '../components/SortByBar'
+import SortByBar from '../components/SortByBar'
 
 const TrailsContainer = (props) =>{
   return(
-
-    < TrailsCardContainer trails={props.trails} />
+    <div className="trails-container">
+     <h3> Explore </h3>
+      < SortByBar />
+      < TrailsCardContainer trails={props.trails} />
+    </div>
   )
 }
 export default TrailsContainer

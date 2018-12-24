@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 export default class SearchBar extends Component {
 
 state = {
-  searchTerm: ""
+  searchTerm: "",
+  toTrails: false
 }
 
 handleSearch = (e) =>{
@@ -18,7 +20,10 @@ render(){
         <div id="search-bar">
           Start Exploring...
           <br></br>
-           <input type="text" onChange={this.handleSearch}></input> <button>Go!</button>
+           <input type="text" onChange={this.handleSearch}></input>
+           <Link to={"/trails"}>
+           <button>Go!</button>
+           </Link>
         </div>
       </div>
     )

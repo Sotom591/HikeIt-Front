@@ -38,6 +38,12 @@
   font-size: larger;
 }
 
+.sortBy{
+  max-width: 250px;
+  margin: auto;
+  padding: 1%;
+}
+
 #trails-card-container{
   display: grid;
   grid-template-columns: 33% 33% 33%;
@@ -50,7 +56,13 @@
     justify-self: center;
     min-height: 300px;
     max-height: 300px;
-    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+
+.ui.card>.image>img, .ui.cards>.card>.image>img {
+  max-height: 225px;
+  min-height: 225px;
 }
 /*
 .ui.card, .ui.cards>.card {

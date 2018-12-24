@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 export default class NavBar extends Component {
 
@@ -8,18 +9,10 @@ render(){
         <div className="header item">
           HikeIt!
         </div>
-        <a href="http://localhost:3001/" className="item">
-          Home
-        </a>
-        <a href="http://localhost:3001/trails" className="item">
-          My Hikes
-        </a>
-        <a href="http://localhost:3001/packinglists" className="item">
-          Pack It
-        </a>
-        <a href="http://localhost:3001/profile" className="item">
-          Profile
-        </a>
+        <Link className="item" to='/'>Home</Link>
+        <Link className="item" to='/trails'> Trails </Link>
+        <Link className="item" to='/packinglists'> Pack it </Link>
+        <Link className="item" to='/profile'> Profile </Link>
       </div>
 
     )
