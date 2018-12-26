@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class TrailsCard extends Component {
 
 render(){
-  console.log(this.props.trail)
     return(
       <div className="ui card" id="trails-card">
       <a className="image" href="#">

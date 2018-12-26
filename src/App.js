@@ -15,7 +15,7 @@ class App extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    trails: [],
+    trails: []
   }
 
   componentDidMount(){
@@ -40,19 +40,20 @@ class App extends Component {
     .then(res => res.json())
     .then(data => this.setState({
       trails: data.trails
-    }))
+    })
+  )
   }
 
-  handleChange = (e) =>{
-    console.log(e.target.value)
-  }
+
 
   render() {
     return (
       <div className="App">
         < NavBar />
         <Route exact path='/' render={() => < HomeContainer /> } />
-        <Route exact path ='/trails' render={() => < TrailsContainer trails={this.state.trails} handleChange={this.handleChange}/>} />
+
+        <Route exact path ='/trails' render={() => < TrailsContainer trails={this.state.trails} />} />
+
         <Route exact path ='/packinglists' render={() => < PackListContainer /> } />
         <Route exact path ='/profile' render={() => < UserContainer /> } />
       </div>
