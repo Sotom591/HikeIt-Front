@@ -50,7 +50,7 @@ class TrailsContainer extends Component {
       <div className="trails-container">
        <h3> Explore </h3>
         < SortByBar handleSort={this.handleSort}/>
-        < TrailsCardContainer trails={this.sortTrailsBy()} />
+        < TrailsCardContainer trails={this.sortTrailsBy()} handleSelectedTrail={this.props.handleSelectedTrail} />
       </div>
     )
   }

@@ -15,7 +15,8 @@ class App extends Component {
     latitude: null,
     longitude: null,
     error: null,
-    trails: []
+    trails: [],
+    selectedTrail: null
   }
 
   componentDidMount(){
@@ -44,6 +45,15 @@ class App extends Component {
   )
   }
 
+  handleSelectedTrail = (e) => {
+    debugger
+    let trailId = e.currentTarget.id
+    let selectedTrail = this.state.trails.find(trail => trail.id === trailId)
+    console.log(selectedTrail)
+    // this.setState({
+    //   selectedTrail: selectedTrail
+    // })
+  }
 
 
   render() {
@@ -52,14 +62,15 @@ class App extends Component {
         < NavBar />
         <Route exact path='/' render={() => < HomeContainer /> } />
 
-        <Route exact path ='/trails' render={() => < TrailsContainer trails={this.state.trails} />} />
+        <Route exact path='/trails' render={() => < TrailsContainer trails={this.state.trails} handleSelectedTrail={this.handleSelectedTrail}/>} />
 
-        <Route exact path ='/packinglists' render={() => < PackListContainer /> } />
+
+        <Route exact path='/packinglists' render={() => < PackListContainer /> } />
         <Route exact path ='/profile' render={() => < UserContainer /> } />
       </div>
     );
   }
 }
 
-export default App;
-// process.env.REACT_APP_API_KEY
+export default App
+      // <Route exact path='/trails/:id' render{() => < TrailsSpecContainer trail={}/>} />
