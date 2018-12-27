@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import TrailsContainer from './containers/TrailsContainer'
 import PackListContainer from './containers/PackListContainer'
 import UserContainer from './containers/UserContainer'
+import TrailsSpecContainer from './containers/TrailsSpecContainer'
 
 
 class App extends Component {
@@ -25,28 +26,24 @@ class App extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           error: null
-        }, () => {this.fetchTrailsByCoords()}
+        }, () => {  fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=100&key=${process.env.REACT_APP_API_KEY}`)
+          .then(res => res.json())
+          .then(data => this.setState({
+            trails: data.trails
+          })
+        )}
       );
       },
         (error) => this.setState({
           error: error.message
         }),
         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-      )
-  }
+      )}
 
-  fetchTrailsByCoords = () =>{
-
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=100&key=${process.env.REACT_APP_API_KEY}`)
-    .then(res => res.json())
-    .then(data => this.setState({
-      trails: data.trails
-    })
-  )
-  }
+  // fetchTrailsByCoords = () =>{
+  // }
 
   handleSelectedTrail = (e) => {
-    debugger
     let trailId = e.currentTarget.id
     let selectedTrail = this.state.trails.find(trail => trail.id === trailId)
     console.log(selectedTrail)
@@ -64,6 +61,10 @@ class App extends Component {
 
         <Route exact path='/trails' render={() => < TrailsContainer trails={this.state.trails} handleSelectedTrail={this.handleSelectedTrail}/>} />
 
+        <Route exact path='/trails/:id' render={(props) => {
+          let trailId = props.match.params.id
+          return <TrailsSpecContainer trail={this.state.trails.find(trail => trail.id === trailId)}/>
+        }} />
 
         <Route exact path='/packinglists' render={() => < PackListContainer /> } />
         <Route exact path ='/profile' render={() => < UserContainer /> } />
@@ -73,4 +74,3 @@ class App extends Component {
 }
 
 export default App
-      // <Route exact path='/trails/:id' render{() => < TrailsSpecContainer trail={}/>} />
