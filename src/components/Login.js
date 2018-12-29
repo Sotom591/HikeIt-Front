@@ -34,7 +34,9 @@ export default class Login extends Component {
       if(data.error){
         alert("Incorrect username and/or password")
       } else {
+        console.log(data)
         this.props.setCurrentUser(data.user_info)
+        localStorage.setItem('token', data.token)
       }
     })
   }

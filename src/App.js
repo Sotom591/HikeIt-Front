@@ -22,7 +22,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-      navigator.geolocation.getCurrentPosition((position) => {
+    // this.setLoginToken()
+    { navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -33,8 +34,9 @@ class App extends Component {
         (error) => this.setState({
           error: error.message
         }),
-        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
       )}
+    }
 
   fetchTrailsByCoords = () =>{
     fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=100&key=${process.env.REACT_APP_API_KEY}`)
@@ -44,6 +46,21 @@ class App extends Component {
       })
     )
   }
+
+  setLoginToken = () => {
+   let token = localStorage.getItem('token')
+    if(token){
+      fetch(`http://localhost:3000/profile`, {
+      headers: {
+        "Authentication": `Bearer ${token}`}
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+    } else {
+      console.log("user needs to manually login")
+    }
+  }
+
 
   handleSelectedTrail = (e) => {
     let trailId = e.currentTarget.id
