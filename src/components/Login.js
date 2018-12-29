@@ -16,10 +16,27 @@ export default class Login extends Component {
     })
   }
 
+  handleLoginSubmit = (e) => {
+    e.preventDefault()
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+
   render(){
       return(
 
-        <div className="ui menu" id="login-bar">
+        <form className="ui menu" id="login-bar" onSubmit={(e) => this.handleLoginSubmit(e)}>
           <div className="header item">
             Login
           </div>
@@ -30,9 +47,9 @@ export default class Login extends Component {
             Password: <input type="text" name="password" onChange={this.handleLogin}></input>
           </div>
           <div className="item">
-            <input type="submit"></input>
+            <button type="submit">Login</button>
           </div>
-        </div>
+        </form>
       )
     }
   }

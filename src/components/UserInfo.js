@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class UserInfo extends Component {
 
 render(){
     return(
       <div>
-        UserInfo
+        {this.props.currentUser ? this.props.currentUser.firstName :
+        "no one is logged in"}
       </div>
     )
   }
 }
-UserInfo

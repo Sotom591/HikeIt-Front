@@ -1,11 +1,11 @@
 import React from 'react'
-// import UserInfo from '../components/UserInfo'
+import UserInfo from '../components/UserInfo'
 
-const UserContainer = () =>{
+const UserContainer = (props) =>{
 
   return(
     <div>
-      UserContainer
+      < UserInfo currentUser={props.currentUser}/>
     </div>
   )
 }

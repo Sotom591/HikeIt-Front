@@ -17,7 +17,8 @@ class App extends Component {
     longitude: null,
     error: null,
     trails: [],
-    selectedTrail: null
+    selectedTrail: null,
+    currentUser: null
   }
 
   componentDidMount(){
@@ -46,7 +47,7 @@ class App extends Component {
 
   handleSelectedTrail = (e) => {
     let trailId = e.currentTarget.id
-    let selectedTrail = this.state.trails.find(trail => trail.id == trailId)
+    let selectedTrail = this.state.trails.find(trail => trail.id === parseInt(trailId))
     this.setState({
       selectedTrail: selectedTrail
     })
@@ -63,11 +64,11 @@ class App extends Component {
 
         <Route exact path='/trails/:id' render={(props) => {
           let trailId = props.match.params.id
-          return <TrailsSpecContainer trail={this.state.trails.find(trail => trail.id == trailId)}/>
+          return <TrailsSpecContainer trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
         }} />
 
         <Route exact path='/packinglists' render={() => < PackListContainer /> } />
-        <Route exact path ='/profile' render={() => < UserContainer /> } />
+        <Route exact path ='/profile' render={() => < UserContainer currentUser={this.state.currentUser} /> } />
       </div>
     );
   }
