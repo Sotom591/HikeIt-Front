@@ -30,7 +30,13 @@ export default class Login extends Component {
       })
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      if(data.error){
+        alert("Incorrect username and/or password")
+      } else {
+        this.props.setCurrentUser(data.user_info)
+      }
+    })
   }
 
   render(){

@@ -53,12 +53,16 @@ class App extends Component {
     })
   }
 
-
+  setCurrentUser = (userObj) => {
+    this.setState({
+      currentUser: userObj
+    })
+  }
   render() {
     return (
       <div className="App">
-        < NavBar />
-        <Route exact path='/' render={() => < HomeContainer /> } />
+        < NavBar currentUser={this.state.currentUser}/>
+        <Route exact path='/' render={() => < HomeContainer setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/> } />
 
         <Route exact path='/trails' render={() => < TrailsContainer trails={this.state.trails} handleSelectedTrail={this.handleSelectedTrail}/>} />
 
