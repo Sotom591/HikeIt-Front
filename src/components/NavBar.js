@@ -19,8 +19,9 @@ render(){
         {this.props.currentUser === null ? null :
           <>
 
-        <Link className="item" to='/trails'> My Hikes </Link>
+        <Link className="item" to='/myhikes'> My Hikes </Link>
         <Link className="item" to='/packinglists'> Pack It </Link>
+        <Link className="item" to='/trails'> Explore </Link>
         <Link className="item" to='/profile'> {this.props.currentUser.username} </Link>
         <Link className="item" id="logout" to='/' onClick={this.logout}>Logout</Link>
 

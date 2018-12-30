@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount(){
     this.setLoginToken()
-    { navigator.geolocation.getCurrentPosition((position) => {
+     navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -35,7 +35,7 @@ class App extends Component {
           error: error.message
         }),
         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-      )}
+      )
     }
 
   fetchTrailsByCoords = () =>{
@@ -94,7 +94,7 @@ class App extends Component {
         }} />
 
         <Route exact path='/packinglists' render={() => < PackListContainer /> } />
-        <Route exact path ='/profile' render={() => < UserContainer currentUser={this.state.currentUser} /> } />
+        < UserContainer currentUser={this.state.currentUser} />
       </div>
     );
   }
