@@ -7,7 +7,11 @@
   grid-template-columns: 50px auto 50px;
   grid-template-rows: 5% 800px;
 }
-
+#logout{
+  margin-left: auto;
+  padding-right: 25px;
+  font-weight: bold;
+}
 #login-bar {
   grid-column-start: 2;
   grid-column-end: 2;

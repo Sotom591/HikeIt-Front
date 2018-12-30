@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // this.setLoginToken()
+    this.setLoginToken()
     { navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
           latitude: position.coords.latitude,
@@ -51,11 +51,16 @@ class App extends Component {
    let token = localStorage.getItem('token')
     if(token){
       fetch(`http://localhost:3000/profile`, {
-      headers: {
-        "Authentication": `Bearer ${token}`}
-      })
+        method: "GET",
+        headers: {
+          "Authentication": `Bearer ${token}`}
+        })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({
+          currentUser: data.user
+        })
+      })
     } else {
       console.log("user needs to manually login")
     }
@@ -78,7 +83,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        < NavBar currentUser={this.state.currentUser}/>
+        < NavBar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
         <Route exact path='/' render={() => < HomeContainer setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/> } />
 
         <Route exact path='/trails' render={() => < TrailsContainer trails={this.state.trails} handleSelectedTrail={this.handleSelectedTrail}/>} />
