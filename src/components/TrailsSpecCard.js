@@ -1,20 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class TrailsSpecCard extends Component {
-
-render(){
+const TrailsSpecCard = ({trail, userTrail}) => {
+console.log(trail, userTrail)
     return(
       <div>
-      {this.props.trail ?
+      {trail ?
           <div>
-          <h3>{this.props.trail.name}</h3>
-          <img alt={this.props.trail.name} src={this.props.trail.imgMedium}/>
+          <h3>{trail.name}</h3>
+          <img alt={trail.name} src={trail.imgMedium}/>
           <button>Hike This!</button>
           <button>Add to Favs</button>
           </div>
         : null}
+        {userTrail ?
+            <div>
+            <h3>{userTrail.name}</h3>
+            <img alt={userTrail.name} src={userTrail.imgMedium}/>
+            <button>Hike This!</button>
+            <button>Add to Favs</button>
+            </div>
+          : null}
 
       </div>
     )
-  }
+
 }
+
+export default TrailsSpecCard

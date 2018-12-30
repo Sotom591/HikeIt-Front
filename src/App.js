@@ -18,10 +18,12 @@ class App extends Component {
     error: null,
     trails: [],
     selectedTrail: null,
-    currentUser: null
+    currentUser: null,
+    userTrails: []
   }
 
   componentDidMount(){
+    this.getUserTrails()
     this.setLoginToken()
      navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
@@ -66,10 +68,26 @@ class App extends Component {
     }
   }
 
+  getUserTrails = () => {
+    fetch(`http://localhost:3000/users/1`)
+      .then(res => res.json())
+      .then(data => {this.setState({
+          userTrails: data.hiking_lists
+        })
+      })
+    }
 
   handleSelectedTrail = (e) => {
     let trailId = e.currentTarget.id
     let selectedTrail = this.state.trails.find(trail => trail.id === parseInt(trailId))
+    this.setState({
+      selectedTrail: selectedTrail
+    })
+  }
+
+  handleSelectedUserTrail = (e) => {
+    let trailId = e.currentTarget.id
+    let selectedTrail = this.state.userTrails.find(trail => trail.id === parseInt(trailId))
     this.setState({
       selectedTrail: selectedTrail
     })
@@ -80,21 +98,25 @@ class App extends Component {
       currentUser: userObj
     })
   }
+
   render() {
     return (
       <div className="App">
         < NavBar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
-        <Route exact path='/' render={() => < HomeContainer setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/> } />
+        <Route exact path='/' render={() => < HomeContainer
+         setCurrentUser={this.setCurrentUser}
+          currentUser={this.state.currentUser}/> } />
 
         <Route exact path='/trails' render={() => < TrailsContainer trails={this.state.trails} handleSelectedTrail={this.handleSelectedTrail}/>} />
 
         <Route exact path='/trails/:id' render={(props) => {
           let trailId = props.match.params.id
-          return <TrailsSpecContainer trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
+          return <TrailsSpecContainer userTrail={this.state.userTrails.find(trail => trail.id === parseInt(trailId))}
+          trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
         }} />
 
         <Route exact path='/packinglists' render={() => < PackListContainer /> } />
-        < UserContainer currentUser={this.state.currentUser} />
+        < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
       </div>
     );
   }

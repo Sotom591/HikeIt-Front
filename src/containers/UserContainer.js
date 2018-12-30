@@ -3,13 +3,16 @@ import { Route } from 'react-router-dom';
 import UserInfo from '../components/UserInfo'
 import UserTrails from '../components/UserTrails'
 
-const UserContainer = (props) =>{
+ const UserContainer = (props) => {
 
-  return(
-    <div>
-      <Route exact path ='/profile' render={() => < UserInfo currentUser={props.currentUser}/> } />
-      <Route exact path ='/myhikes' render={() => < UserTrails currentUser={props.currentUser} /> } />
-    </div>
-  )
+    return(
+      <div>
+        {props.userTrails.map(trail => <Route exact path ='/myhikes' render={() => < UserTrails handleSelectedUserTrail={props.handleSelectedUserTrail} key={trail.id} trail={trail} /> } />)}
+
+        <Route exact path ='/profile' render={() => < UserInfo currentUser={props.currentUser}/> } />
+
+      </div>
+    )
 }
+
 export default UserContainer
