@@ -124,7 +124,54 @@ class App extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault()
-    console.log("submitted")
+    let listId = e.currentTarget.id
+    let token = localStorage.getItem('token')
+    // console.log("submitted", token)
+    fetch('http://localhost:3000/packing_items', {
+      method: "POST",
+      headers: {
+        "Authentication": `Bearer ${token}`,
+        "Content-Type": "application/json",
+         "Accept": "application/json"
+       },
+      body: JSON.stringify({
+        name: this.state.formInput,
+        packed: false,
+        packing_list_id: listId
+      })
+    })
+    .then(res => res.json())
+    .then(newItem => {
+      this.setState({
+        userItems: [...this.state.userItems, newItem]
+      })
+    })
+  }
+
+  // packChange = (itemId) => {
+  //   console.log(itemId)
+  //   let token = localStorage.getItem('token')
+  //   fetch('http://localhost:3000/packing_items', {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Authentication": `Bearer ${token}`,
+  //       "Content-Type": "application/json",
+  //        "Accept": "application/json"
+  //      },
+  //     body: JSON.stringify({
+  //       packed: false,
+  //     })
+  //   })
+  //   .then(res => res.json())
+  //   .then(newItem => {
+  //     this.setState({
+  //       userItems: [...this.state.userItems, newItem]
+  //     })
+  //   })
+  // }
+
+  removeItem = (itemId) => {
+    console.log(`removing ${itemId}`)
   }
 
   render() {
@@ -153,9 +200,9 @@ class App extends Component {
             let listId = props.match.params.id
             return < PackList list={this.state.userLists.find(list =>
             list.id === parseInt(listId))}
-            items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))}
+            items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))} packChange={this.packChange}
             onListFormChange={this.onListFormChange}
-            onFormSubmit={this.onFormSubmit}/>
+            onFormSubmit={this.onFormSubmit} removeItem={this.removeItem}/>
         }} />
 
         < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
