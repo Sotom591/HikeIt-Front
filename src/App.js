@@ -19,11 +19,13 @@ class App extends Component {
     trails: [],
     selectedTrail: null,
     currentUser: null,
-    userTrails: []
+    userTrails: [],
+    userLists: [],
+    userItems: []
   }
 
   componentDidMount(){
-    this.getUserTrails()
+
     this.setLoginToken()
      navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
@@ -62,17 +64,22 @@ class App extends Component {
         this.setState({
           currentUser: data.user
         })
+        this.getUserData(data.user.id)
       })
     } else {
       console.log("user needs to manually login")
     }
   }
 
-  getUserTrails = () => {
-    fetch(`http://localhost:3000/users/1`)
+  getUserData = (userId) => {
+    fetch(`http://localhost:3000/users/${userId}`)
       .then(res => res.json())
-      .then(data => {this.setState({
-          userTrails: data.hiking_lists
+      .then(data =>
+        {
+        this.setState({
+          userTrails: data.hiking_lists,
+          userLists: data.packing_lists,
+          userItems: data.packing_items
         })
       })
     }
@@ -115,7 +122,7 @@ class App extends Component {
           trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
         }} />
 
-        <Route exact path='/packinglists' render={() => < PackListContainer /> } />
+        <Route exact path='/packinglists' render={() => < PackListContainer packingLists={this.state.userLists} packingItems={this.state.userItems}/> } />
         < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
       </div>
     );
