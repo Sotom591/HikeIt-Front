@@ -171,7 +171,23 @@ class App extends Component {
 
   removeItem = (itemId) => {
     console.log(`removing ${itemId}`)
-  }
+    let id = parseInt(itemId)
+    let token = localStorage.getItem('token')
+    fetch(`http://localhost:3000/packing_items/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authentication": `Bearer ${token}`
+      }
+    })
+
+      .then(res => res.json)
+      .then(data => {
+        let newUserItems = this.state.userItems.filter(item => item.id !== id)
+        this.setState({
+          userItems: newUserItems
+        })
+      })
+    }
 
   render() {
     return (
