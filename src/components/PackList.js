@@ -12,7 +12,7 @@ export default class PackList extends Component {
           <h3>
             {this.props.list ? this.props.list.title : null}
           </h3>
-          {this.props.items.map(item=> < PackListItems key={item.id} item={item} removeItem={this.props.removeItem} packChange={this.props.packChange} removeItem={this.props.removeItem}/>)}
+          {this.props.items.map(item=> < PackListItems key={item.id} item={item} removeItem={this.props.removeItem} packChange={this.props.packChange} />)}
           < PackListForm onListFormChange={this.props.onListFormChange} onFormSubmit={this.props.onFormSubmit} list={this.props.list}/>
         </div>
       )

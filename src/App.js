@@ -148,27 +148,26 @@ class App extends Component {
     })
   }
 
-  // packChange = (itemId) => {
-  //   console.log(itemId)
-  //   let token = localStorage.getItem('token')
-  //   fetch('http://localhost:3000/packing_items', {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Authentication": `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //        "Accept": "application/json"
-  //      },
-  //     body: JSON.stringify({
-  //       packed: false,
-  //     })
-  //   })
-  //   .then(res => res.json())
-  //   .then(newItem => {
-  //     this.setState({
-  //       userItems: [...this.state.userItems, newItem]
-  //     })
-  //   })
-  // }
+  packChange = (itemId, packed) => {
+    // console.log(itemId, packed)
+    let id = parseInt(itemId)
+    let token = localStorage.getItem('token')
+    fetch(`http://localhost:3000/packing_items/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Authentication": `Bearer ${token}`,
+        "Content-Type": "application/json",
+         "Accept": "application/json"
+       },
+      body: JSON.stringify({
+        packed: packed,
+      })
+    })
+    .then(res => res.json())
+    .then(nowPacked => {
+      console.log(nowPacked)
+    })
+  }
 
   removeItem = (itemId) => {
     console.log(`removing ${itemId}`)
