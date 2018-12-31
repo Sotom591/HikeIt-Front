@@ -10,7 +10,7 @@ logout = () => {
 render(){
 
     return(
-      <div className="ui menu" id="nav-bar">
+      <div className="ui inverted menu" id="nav-bar">
         <div className="header item">
           HikeIt!
         </div>
@@ -20,7 +20,7 @@ render(){
           <>
 
         <Link className="item" to='/myhikes'> My Hikes </Link>
-        <Link className="item" to='/packinglists'> Pack It </Link>
+        <Link className="item" to='/lists'> Pack It </Link>
         <Link className="item" to='/trails'> Explore </Link>
         <Link className="item" to='/profile'> {this.props.currentUser.username} </Link>
         <Link className="item" id="logout" to='/' onClick={this.logout}>Logout</Link>

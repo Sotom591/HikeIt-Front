@@ -7,6 +7,11 @@
   grid-template-columns: 50px auto 50px;
   grid-template-rows: 5% 800px;
 }
+
+.ui.menu {
+    font-size: 1.1em;
+}
+
 #logout{
   margin-left: auto;
   padding-right: 25px;
@@ -26,9 +31,12 @@
   grid-row-start: 1;
   grid-row-end: 1;
   justify-self: center;
+  color: #0a7344;
+  font-size: larger;
+  font-weight: bold;
 }
 #explore-container {
-  background-image: url("https://i.imgur.com/TEbwhVs.jpg?1");
+  background-image: url("https://lonelyplanetwp.imgix.net/2018/03/qadisha-valley-lebanon-b1b31d22137d.jpg?fit=min&q=40&sharp=10&vib=20&w=1470");
   background-size: 1300px 1000px;
   grid-column-start: 2;
   grid-column-end: 2;
@@ -43,8 +51,8 @@
   grid-row-end: 2;
   justify-self: center;
   align-self: center;
-  margin-top: 35%;
-  color: white;
+  margin-top: 30%;
+  color: #0a7344;
   font-weight: bold;
   font-size: larger;
 }
@@ -70,6 +78,10 @@
     margin: 1em 0;
 }
 
+.trail-link{
+  justify-content: center;
+  justify-self: center;
+}
 .ui.card:first-child {
     margin-top: 12px;
 }

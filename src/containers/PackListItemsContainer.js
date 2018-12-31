@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import PackListForm from './PackListForm'
-import PackListItems from './PackListItems'
+import PackListForm from '../components/PackListForm'
+import PackListItems from '../components/PackListItems'
 
-export default class PackList extends Component {
+export default class PackListItemsContainer extends Component {
 
 
   render(){

@@ -4,7 +4,7 @@ export default class TrailsCard extends Component {
 
   render(){
       return(
-        <Link to={`/trails/${this.props.trail.id}`}>
+        <Link to={`/trails/${this.props.trail.id}`} className='trail-link'>
         <div className="ui card" id={this.props.trail.id} onClick={this.props.handleSelectedTrail}>
         <div className="image">
         <img alt={this.props.trail.name} src={this.props.trail.imgSmall} />

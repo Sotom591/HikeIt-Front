@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import PackList from '../components/PackList'
+
 
 
 class PackListContainer extends Component {
@@ -17,18 +17,21 @@ class PackListContainer extends Component {
   }
 
   render(){
-    console.log(this.props)
     return(
       <div>
-        <h4>Pack For It!</h4>
-        <div className="ui bulleted list" >
+        <h2>Pack For It!</h2>
+
         {this.props.lists.map(list =>
+
           <Link to={`/lists/${list.id}`}>
+          <div className="ui bulleted list" >
           <div className="item" onClick={this.props.handleSelectedList} id={list.id} key={list.id}> {list.title} </div>
+          </div>
           </Link>
+
         )}
         </div>
-      </div>
+
     )
   }
 

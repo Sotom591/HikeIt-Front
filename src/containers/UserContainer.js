@@ -9,7 +9,7 @@ import UserTrails from '../components/UserTrails'
         {props.userTrails.map(trail => <Route exact path ='/myhikes' render={() => < UserTrails handleSelectedUserTrail={props.handleSelectedUserTrail}  trail={trail} /> } /> )}
 
 
-        <Route exact path ='/profile' render={() => < UserInfo currentUser={props.currentUser}/> } />
+        <Route exact path ='/profile' render={() => < UserInfo userTrails={props.userTrails} userLists={props.userLists} currentUser={props.currentUser}/> } />
 
       </div>
     )

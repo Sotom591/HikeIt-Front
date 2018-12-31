@@ -8,7 +8,7 @@ import TrailsContainer from './containers/TrailsContainer'
 import PackListContainer from './containers/PackListContainer'
 import UserContainer from './containers/UserContainer'
 import TrailsSpecContainer from './containers/TrailsSpecContainer'
-import PackList from './components/PackList'
+import PackListItemsContainer from './containers/PackListItemsContainer'
 
 
 class App extends Component {
@@ -213,14 +213,14 @@ class App extends Component {
         <Route exact path='/lists/:id' render={(props) =>
           {
             let listId = props.match.params.id
-            return < PackList list={this.state.userLists.find(list =>
+            return < PackListItemsContainer list={this.state.userLists.find(list =>
             list.id === parseInt(listId))}
             items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))} packChange={this.packChange}
             onListFormChange={this.onListFormChange}
             onFormSubmit={this.onFormSubmit} removeItem={this.removeItem}/>
         }} />
 
-        < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
+        < UserContainer userTrails={this.state.userTrails} userLists={this.state.userLists} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
 
 
       </div>

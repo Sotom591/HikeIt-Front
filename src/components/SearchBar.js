@@ -17,15 +17,17 @@ handleSearch = (e) =>{
 render(){
     return(
       <div>
-        <div id="search-bar">
-          Start Exploring...
-          <br></br>
-           <input type="text" onChange={this.handleSearch}></input>
+
            <Link to={"/trails"}>
-           <button>Go!</button>
+            <div id="search-bar">
+            Start Exploring...
+            </div>
            </Link>
-        </div>
+
       </div>
     )
   }
 }
+// Start Exploring...
+// <br></br>
+// <input type="text" onChange={this.handleSearch}></input>
