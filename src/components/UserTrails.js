@@ -7,11 +7,11 @@ export default class UserTrails extends Component {
 
 render(){
     return(
-      <div>
+      <div className='user-trails'>
       <h3> Explore It Again </h3>
         <div id="trails-card-container">
           {this.props.trail ?
-          <Link to={`/trails/${this.props.trail.id}`}>
+          <Link to={`/trails/${this.props.trail.id}`} className='trail-link'>
           <div className="ui card" id={this.props.trail.id} onClick={this.props.handleSelectedUserTrail}>
           <div className="image">
           <img alt={this.props.trail.name} src={this.props.trail.imgSmall} />

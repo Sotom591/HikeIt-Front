@@ -9,7 +9,7 @@
 }
 
 .ui.menu {
-    font-size: 1.1em;
+  font-size: 1.1em;
 }
 
 #logout{
@@ -63,12 +63,65 @@
   padding: 1%
 }
 
+.trails-container{
+  color: #0a7344;
+}
 #trails-card-container{
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-auto-rows: 25%;
   grid-row-gap: 15px;
 }
+
+.user-trails{
+  color: #0a7344;
+}
+
+.trail-specs{
+  color: #0a7344;
+  display: grid;
+  grid-template-rows: 100px 600px 25px 25px;
+  grid-template-columns: 50px auto 50px;
+}
+
+.trail-name{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+.trail-img{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  justify-self: center;
+  align-self: center;
+  max-height: 600px;
+}
+
+.hike-btn{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  justify-self: center;
+  /* align-self: center; */
+}
+
+.fav-btn{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  justify-self: center;
+  /* align-self: center; */
+}
+
+
 
 .ui.card {
     justify-content: center;

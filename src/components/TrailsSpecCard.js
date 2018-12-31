@@ -5,19 +5,19 @@ console.log(trail, userTrail)
     return(
       <div>
       {trail ?
-          <div>
-          <h3>{trail.name}</h3>
-          <img alt={trail.name} src={trail.imgMedium}/>
-          <button>Hike This!</button>
-          <button>Add to Favs</button>
+          <div className='trail-specs'>
+          <h3 className='trail-name'>{trail.name}</h3>
+          <img className='trail-img' alt={trail.name} src={trail.imgMedium}/>
+          <button className='hike-btn'>Hike This!</button>
+          <button className='fav-btn'>Add to Favs</button>
           </div>
         : null}
         {userTrail ?
-            <div>
-            <h3>{userTrail.name}</h3>
-            <img alt={userTrail.name} src={userTrail.imgMedium}/>
-            <button>Hike This!</button>
-            <button>Add to Favs</button>
+            <div className='trail-specs'>
+            <h3  className='trail-name'>{userTrail.name}</h3>
+            <img className='trail-img' alt={userTrail.name} src={userTrail.imgMedium}/>
+            <button className='hike-btn'>Hike This!</button>
+            <button className='fav-btn'>Add to Favs</button>
             </div>
           : null}
 
