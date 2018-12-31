@@ -1,26 +1,37 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PackList from '../components/PackList'
+// import PackList from '../components/PackList'
 
 
-const PackListContainer = (props) =>{
-console.log(props)
+class PackListContainer extends Component {
+  state = {
+    selectedList: null
+  }
 
-  return(
-    <div>
-      <h4>Pack For It!</h4>
-      <div className="ui bulleted list" >
-      {props.packingLists.map(list =>
-        <div className="item" key={list.id}> {list.title} </div>
-      )}
+  handleSelectedList = (e) => {
+    let listId = e.currentTarget.id
+    let selectedList = this.props.lists.find(list => list.id === parseInt(listId))
+    this.setState({
+      selectedList: selectedList
+    })
+  }
+
+  render(){
+    console.log(this.props)
+    return(
+      <div>
+        <h4>Pack For It!</h4>
+        <div className="ui bulleted list" >
+        {this.props.lists.map(list =>
+          <Link to={`/lists/${list.id}`}>
+          <div className="item" onClick={this.props.handleSelectedList} id={list.id} key={list.id}> {list.title} </div>
+          </Link>
+        )}
+        </div>
       </div>
-      <Route exact path='/packinglist/:id' render={() => {
-        return < PackList packingItems={props.packingItems}/>
-      }} />
+    )
+  }
 
-    </div>
-  )
 }
 
 export default PackListContainer
@@ -32,3 +43,9 @@ export default PackListContainer
 // } />
 
 // <Link to={`/trails/${this.props.trail.id}`}>
+
+// <Route exact path='/trails/:id' render={(props) => {
+//   let trailId = props.match.params.id
+//   return <TrailsSpecContainer userTrail={this.state.userTrails.find(trail => trail.id === parseInt(trailId))}
+//   trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
+// }} />

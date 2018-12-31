@@ -4,10 +4,10 @@ import UserInfo from '../components/UserInfo'
 import UserTrails from '../components/UserTrails'
 
  const UserContainer = (props) => {
-
     return(
       <div>
-        {props.userTrails.map(trail => <Route exact path ='/myhikes' render={() => < UserTrails handleSelectedUserTrail={props.handleSelectedUserTrail} key={trail.id} trail={trail} /> } />)}
+        {props.userTrails.map(trail => <Route exact path ='/myhikes' render={() => < UserTrails handleSelectedUserTrail={props.handleSelectedUserTrail}  trail={trail} /> } /> )}
+
 
         <Route exact path ='/profile' render={() => < UserInfo currentUser={props.currentUser}/> } />
 

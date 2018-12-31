@@ -8,6 +8,7 @@ import TrailsContainer from './containers/TrailsContainer'
 import PackListContainer from './containers/PackListContainer'
 import UserContainer from './containers/UserContainer'
 import TrailsSpecContainer from './containers/TrailsSpecContainer'
+import PackList from './components/PackList'
 
 
 class App extends Component {
@@ -21,7 +22,8 @@ class App extends Component {
     currentUser: null,
     userTrails: [],
     userLists: [],
-    userItems: []
+    userItems: [],
+    selectedList: null
   }
 
   componentDidMount(){
@@ -106,6 +108,14 @@ class App extends Component {
     })
   }
 
+  handleSelectedList = (e) => {
+    let listId = e.currentTarget.id
+    let selectedList = this.state.userLists.find(list => list.id === parseInt(listId))
+    this.setState({
+      selectedList: selectedList
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -122,8 +132,20 @@ class App extends Component {
           trail={this.state.trails.find(trail => trail.id === parseInt(trailId))}/>
         }} />
 
-        <Route exact path='/packinglists' render={() => < PackListContainer packingLists={this.state.userLists} packingItems={this.state.userItems}/> } />
+        <Route exact path='/lists' render={() => {
+          return < PackListContainer lists={this.state.userLists}  handleSelectedList={this.handleSelectedList}/>
+        }} />
+
+        <Route exact path='/lists/:id' render={(props) =>
+          {
+            let listId = props.match.params.id
+            return < PackList list={this.state.userLists.find(list =>
+            list.id === parseInt(listId))} items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))}/>
+        }} />
+
         < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
+
+
       </div>
     );
   }
