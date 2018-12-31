@@ -23,11 +23,11 @@ class App extends Component {
     userTrails: [],
     userLists: [],
     userItems: [],
-    selectedList: null
+    selectedList: null,
+    formInput: ""
   }
 
   componentDidMount(){
-
     this.setLoginToken()
      navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
@@ -86,6 +86,12 @@ class App extends Component {
       })
     }
 
+  setCurrentUser = (userObj) => {
+    this.setState({
+      currentUser: userObj
+    })
+  }
+
   handleSelectedTrail = (e) => {
     let trailId = e.currentTarget.id
     let selectedTrail = this.state.trails.find(trail => trail.id === parseInt(trailId))
@@ -102,12 +108,6 @@ class App extends Component {
     })
   }
 
-  setCurrentUser = (userObj) => {
-    this.setState({
-      currentUser: userObj
-    })
-  }
-
   handleSelectedList = (e) => {
     let listId = e.currentTarget.id
     let selectedList = this.state.userLists.find(list => list.id === parseInt(listId))
@@ -116,10 +116,22 @@ class App extends Component {
     })
   }
 
+  onListFormChange = (e) => {
+    this.setState({
+      formInput: e.currentTarget.value
+    })
+  }
+
+  onFormSubmit = (e) => {
+    e.preventDefault()
+    console.log("submitted")
+  }
+
   render() {
     return (
       <div className="App">
         < NavBar currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+
         <Route exact path='/' render={() => < HomeContainer
          setCurrentUser={this.setCurrentUser}
           currentUser={this.state.currentUser}/> } />
@@ -140,7 +152,10 @@ class App extends Component {
           {
             let listId = props.match.params.id
             return < PackList list={this.state.userLists.find(list =>
-            list.id === parseInt(listId))} items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))}/>
+            list.id === parseInt(listId))}
+            items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))}
+            onListFormChange={this.onListFormChange}
+            onFormSubmit={this.onFormSubmit}/>
         }} />
 
         < UserContainer userTrails={this.state.userTrails} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
