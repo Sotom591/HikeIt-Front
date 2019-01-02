@@ -6,6 +6,7 @@ export default class PackListItemsContainer extends Component {
 
 
   render(){
+    console.log(this.props.list)
       return(
         <div className='pack-items-container'>
           <h3 id='list-title'>
