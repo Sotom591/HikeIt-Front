@@ -1,12 +1,19 @@
 import 'react-rater/lib/react-rater.css'
 
+.App {
+  text-align: center;
+}
+
+h4 {
+    font-size: 1.17142857rem;
+}
+
 .react-rater-star {
   color: gold;
   font-size: x-large;
 }
 
 .react-rater-star.is-disabled {
-
   font-size: x-large;
 }
 
@@ -17,12 +24,7 @@ import 'react-rater/lib/react-rater.css'
 }
 
 .react-rater-star.is-disabled.is-active-half{
-
   font-size: x-large;
-}
-
-.App {
-  text-align: center;
 }
 
 .home-container {
@@ -103,8 +105,8 @@ import 'react-rater/lib/react-rater.css'
 .trail-specs{
   color: #0a7344;
   display: grid;
-  grid-template-rows: 50px 50px 600px 35px 35px;
-  grid-template-columns: 50px auto 50px;
+  grid-template-rows: 50px 50px 600px 45px 45px;
+  grid-template-columns: 30px auto 30px;
 }
 
 .star-rating{
@@ -129,19 +131,38 @@ import 'react-rater/lib/react-rater.css'
   max-height: 25px;
 }
 
-.trail-img{
+.t-detailsDiv{
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end: 3;
-  justify-self: center;
+  display: grid;
+  border-style: solid;
+  grid-template-columns: 78% 22%;
+}
+.trail-img{
+  justify-self: start;
+  padding: 3px;
   align-self: center;
-  max-height: 600px;
-  min-height: 500px;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  max-height: 580px;
+  min-height: 592px;
   max-width: 800px;
+  border-radius: 10px;
 }
 
-.hike-btn{
+.t-dets{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+  font-size: medium;
+  border-left: solid;
+  color: black;
+  border-color: #0a7344;
+}
+
+#hike-btn{
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 4;
@@ -150,7 +171,7 @@ import 'react-rater/lib/react-rater.css'
   align-self: end
 }
 
-.fav-btn{
+#fav-btn{
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 5;

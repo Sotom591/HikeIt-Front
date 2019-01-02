@@ -5,12 +5,6 @@ import 'react-rater/lib/react-rater.css'
 
 const TrailsSpecCard = ({trail, userTrail}) => {
 
-// <img src="https://cdn.apstatic.com/img/diff/greenBlk.svg">
-"https://cdn.apstatic.com/img/diff/greenBlue.svg"
-"https://cdn.apstatic.com/img/diff/blueBlack.svg"
-// <img src="https://cdn.apstatic.com/img/diff/blueBlk.svg">
-// <img src="https://cdn.apstatic.com/img/diff/blackBlk.svg">
-// <img src="https://cdn.apstatic.com/img/diff/dblackBlk.svg">
   const difficultyRating = () =>{
       if(trail.difficulty === "green"){
         return <img className="diff-img" alt="green" src="https://cdn.apstatic.com/img/diff/greenBlk.svg" />
@@ -52,24 +46,39 @@ const TrailsSpecCard = ({trail, userTrail}) => {
       <div>
       {trail ?
           <div className='trail-specs'>
-          <h3 className='trail-name'>{trail.name + " "}{difficultyRating()}</h3>
+          <h2 className='trail-name'>{trail.name + " "}{difficultyRating()}</h2>
           <div className='star-rating'><Rater total={5} interactive={false} rating={trail.stars}/></div>
+          <div className='t-detailsDiv'>
           <img className='trail-img' alt={trail.name} src={trail.imgMedium}/>
-          <button className='hike-btn'>Hike This!</button>
-          <button className='fav-btn'>Add to Favs</button>
+          <div className="t-dets">
+           <h4>Location: </h4> <p className="dets-p"> {trail.location} </p>
+           <h4> Length: </h4> <p className="dets-p"> {trail.length}</p>
+           <h4>Ascent: </h4> <p className="dets-p"> {trail.ascent}</p>
+           <h4>Descent: </h4> <p className="dets-p">{trail.descent}</p>
+           <h4>Coordinates: </h4> <p className="dets-p">{trail.latitude + ", " + trail.longitude}</p>
+           <h4>Conditions as of {trail.conditionDate}: </h4> <p className="dets-p">{trail.conditionDetails} </p>
+          </div>
+          </div>
+          <button className='ui secondary button' id='hike-btn'>Keep It For Later <i class="bookmark outline icon"></i></button>
+          <button className='ui secondary button' id='fav-btn'>Add To Favorites <i class="heart outline icon"></i></button>
           </div>
         : null}
         {userTrail ?
             <div className='trail-specs'>
+            <h2  className='trail-name'>{userTrail.name + " "}{difficultyRatingUser()}</h2>
             <div className='star-rating'> <Rater total={5} interactive={false} rating={userTrail.stars}/></div>
-            <h3  className='trail-name'>{userTrail.name + " "}{difficultyRatingUser()}</h3>
+            <div className='t-detailsDiv'>
             <img className='trail-img' alt={userTrail.name} src={userTrail.imgMedium}/>
-            <div className='hike-btn'>
-            <button>Hike This!</button>
+            <div className="t-dets">
+             <h4> Location:</h4> <p className="dets-p"> {userTrail.location} </p>
+             <h4> Length: </h4> <p className="dets-p">{userTrail.length}</p>
+             <h4>Ascent: </h4> <p className="dets-p">{userTrail.ascent}</p>
+             <h4>Descent: </h4> <p className="dets-p">{userTrail.descent}</p>
+             <h4>Coordinates: </h4> <p className="dets-p">{userTrail.latitude + ", " + userTrail.longitude}</p>
             </div>
-            <div className='fav-btn'>
-            <button>Add to Favs</button>
             </div>
+            <button className='ui secondary button' id='hike-btn'>Keep It For Later</button>
+            <button className='ui secondary button' id='fav-btn'>Add To Favorites</button>
             </div>
           : null}
 
