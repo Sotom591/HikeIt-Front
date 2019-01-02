@@ -1,3 +1,26 @@
+import 'react-rater/lib/react-rater.css'
+
+.react-rater-star {
+  color: gold;
+  font-size: x-large;
+}
+
+.react-rater-star.is-disabled {
+
+  font-size: x-large;
+}
+
+.react-rater-star.is-active {
+  color: gold;
+  color: unset;
+  font-size: x-large;
+}
+
+.react-rater-star.is-disabled.is-active-half{
+
+  font-size: x-large;
+}
+
 .App {
   text-align: center;
 }
@@ -80,8 +103,17 @@
 .trail-specs{
   color: #0a7344;
   display: grid;
-  grid-template-rows: 100px 600px 25px 25px;
+  grid-template-rows: 50px 50px 600px 35px 35px;
   grid-template-columns: 50px auto 50px;
+}
+
+.star-rating{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  justify-self: center;
+  align-self: center;
 }
 
 .trail-name{
@@ -93,42 +125,48 @@
   align-self: center;
 }
 
-.trail-img{
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  justify-self: center;
-  align-self: center;
-  max-height: 600px;
+.diff-img{
+  max-height: 25px;
 }
 
-.hike-btn{
+.trail-img{
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end: 3;
   justify-self: center;
-  /* align-self: center; */
+  align-self: center;
+  max-height: 600px;
+  min-height: 500px;
+  max-width: 800px;
 }
 
-.fav-btn{
+.hike-btn{
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 4;
   grid-row-end: 4;
   justify-self: center;
-  /* align-self: center; */
+  align-self: end
+}
+
+.fav-btn{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 5;
+  justify-self: center;
+  align-self: end
 }
 
 
 
 .ui.card {
-    justify-content: center;
-    justify-self: center;
-    min-height: 300px;
-    max-height: 300px;
-    margin: 1em 0;
+  justify-content: center;
+  justify-self: center;
+  min-height: 300px;
+  max-height: 300px;
+  margin: 1em 0;
 }
 
 .trail-link{

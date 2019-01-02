@@ -23,7 +23,9 @@ render(){
         <Link className="item" to='/lists'> Pack It </Link>
         <Link className="item" to='/trails'> Explore </Link>
         <Link className="item" to='/profile'> {this.props.currentUser.username} </Link>
-        <Link className="item" id="logout" to='/' onClick={this.logout}>Logout</Link>
+
+        <Link className="item" id="logout" to='/' onClick={this.logout}>
+        <i className="tree icon"></i>Logout</Link>
 
 
         </>
