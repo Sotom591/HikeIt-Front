@@ -8,7 +8,7 @@ export default class UserTrails extends Component {
 render(){
     return(
       <div className='user-trails'>
-      <h3> Explore It Again </h3>
+      <h2> Explore It Again </h2>
         <div id="trails-card-container">
           {this.props.trail ?
           <Link to={`/trails/${this.props.trail.id}`} className='trail-link'>

@@ -16,12 +16,10 @@ handleSearch = (e) =>{
 
 render(){
     return(
-      <div>
+      <div id="search-bar">
 
            <Link to={"/trails"}>
-            <div id="search-bar">
-            Start Exploring...
-            </div>
+            <h3>Start Exploring...</h3>
            </Link>
 
       </div>

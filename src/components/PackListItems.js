@@ -18,14 +18,17 @@ export default class PackListItems extends Component {
 
   render(){
       return(
-        <div>
+        <p className='pack-items'>
           {this.props.item ?
-          <div className="item">
-            <button onClick={() => {this.props.removeItem(this.props.item.id)}}>x</button>{this.props.item.name}
-            <input type="checkbox" checked={this.state.packed} onChange={this.handleCheckBox}/>
-          </div>
+          <p className='pitem'>
+            <button className='ui compact icon button' onClick={() => {this.props.removeItem(this.props.item.id)}}><i class="times icon"></i></button>
+            {" " + this.props.item.name + " "}
+
+            <input className="ui checkbox" type="checkbox" checked={this.state.packed} onChange={this.handleCheckBox}/>
+
+          </p>
           : null}
-        </div>
+        </p>
       )
     }
 }

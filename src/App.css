@@ -1,19 +1,12 @@
 import 'react-rater/lib/react-rater.css'
 
-.App {
-  text-align: center;
-}
-
-h4 {
-    font-size: 1.17142857rem;
-}
-
 .react-rater-star {
   color: gold;
   font-size: x-large;
 }
 
 .react-rater-star.is-disabled {
+
   font-size: x-large;
 }
 
@@ -24,7 +17,17 @@ h4 {
 }
 
 .react-rater-star.is-disabled.is-active-half{
+
   font-size: x-large;
+}
+
+.App {
+  text-align: center;
+}
+
+a {
+    color: #0a7344;
+    text-decoration: none;
 }
 
 .home-container {
@@ -60,6 +63,12 @@ h4 {
   font-size: larger;
   font-weight: bold;
 }
+
+.ui.bulleted.list, ul.ui.list {
+  font-size: medium;
+  margin-left: 1.25rem;
+}
+
 #explore-container {
   background-image: url("https://lonelyplanetwp.imgix.net/2018/03/qadisha-valley-lebanon-b1b31d22137d.jpg?fit=min&q=40&sharp=10&vib=20&w=1470");
   background-size: 1300px 1000px;
@@ -88,6 +97,48 @@ h4 {
   padding: 1%
 }
 
+.pack-container{
+  color: #0a7344;
+}
+
+.pack-items-container{
+    color: #0a7344;
+  }
+
+.pack-items{
+  font-size: medium;
+}
+.ui.checkbox{
+  min-height: 25px;
+}
+
+.ui.compact.icon.button, .ui.compact.icon.buttons .button {
+    padding: .48928571em .48928571em .48928571em;
+}
+    /* display: grid;
+    grid-template-rows: 50px 300px 50px;
+    grid-template-columns: 30px auto 30px;
+}
+#list-title{
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+.pack-items{
+    display: grid;
+    grid-auto-rows: 10%;
+    grid-auto-columns: 30px auto 30px;
+    grid: display;
+    grid-column-start: 2;
+    grid-column-end: 2;
+}
+.pack-form{
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 2;
+} */
 .trails-container{
   color: #0a7344;
 }
@@ -155,11 +206,10 @@ h4 {
 .t-dets{
   grid-column-start: 2;
   grid-column-end: 2;
-  text-align: center;
   font-size: medium;
   border-left: solid;
   color: black;
-  border-color: #0a7344;
+border-color: #0a7344;
 }
 
 #hike-btn{

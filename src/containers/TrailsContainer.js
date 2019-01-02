@@ -48,7 +48,7 @@ class TrailsContainer extends Component {
   render(){
     return(
       <div className="trails-container">
-       <h3> Your Next Adventure Awaits... </h3>
+       <h2> Your Next Adventure Awaits... </h2>
         < SortByBar handleSort={this.handleSort}/>
         < TrailsCardContainer trails={this.sortTrailsBy()} handleSelectedTrail={this.props.handleSelectedTrail} />
       </div>

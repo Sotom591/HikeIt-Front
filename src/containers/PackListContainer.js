@@ -18,7 +18,7 @@ class PackListContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div className='pack-container'>
         <h2>Pack For It!</h2>
 
         {this.props.lists.map(list =>
