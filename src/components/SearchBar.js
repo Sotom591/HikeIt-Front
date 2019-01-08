@@ -26,6 +26,3 @@ render(){
     )
   }
 }
-// Start Exploring...
-// <br></br>
-// <input type="text" onChange={this.handleSearch}></input>
