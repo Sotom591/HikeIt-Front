@@ -77,8 +77,6 @@ const TrailsSpecCard = ({trail, userTrail}) => {
              <h4>Coordinates: </h4> <p className="dets-p">{userTrail.latitude + ", " + userTrail.longitude}</p>
             </div>
             </div>
-            <button className='ui secondary button' id='hike-btn'>Keep It For Later</button>
-            <button className='ui secondary button' id='fav-btn'>Add To Favorites</button>
             </div>
           : null}
 

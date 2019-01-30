@@ -77,8 +77,9 @@ a {
 
 #explore-container {
   background-image: url("https://lonelyplanetwp.imgix.net/2018/03/qadisha-valley-lebanon-b1b31d22137d.jpg?fit=min&q=40&sharp=10&vib=20&w=1470");
-  background-size: 1300px 1000px;
+  background-size: cover;
   border-radius: 5px;
+  background-repeat: no-repeat;
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 2;
@@ -213,14 +214,15 @@ a {
   grid-template-columns: 78% 22%;
 }
 .trail-img{
-  justify-self: start;
+  justify-self: center;
   padding: 3px;
   align-self: center;
   grid-column-start: 1;
   grid-column-end: 1;
   max-height: 580px;
   min-height: 592px;
-  max-width: 800px;
+  max-width: 1000px;
+  min-width: 1230px;
   border-radius: 10px;
 }
 

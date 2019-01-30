@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import { connect } from 'react-redux'
+import { changeFormInput } from './actions'
 
 import HomeContainer from './containers/HomeContainer'
 import NavBar from './components/NavBar'
@@ -24,7 +26,7 @@ class App extends Component {
     userLists: [],
     userItems: [],
     selectedList: null,
-    formInput: ""
+    // formInput: ""
   }
 
   componentDidMount(){
@@ -116,11 +118,11 @@ class App extends Component {
     })
   }
 
-  onListFormChange = (e) => {
-    this.setState({
-      formInput: e.currentTarget.value
-    })
-  }
+  // onListFormChange = (e) => {
+  //   this.setState({
+  //     formInput: e.currentTarget.value
+  //   })
+  // }
 
   onFormSubmit = (e) => {
     e.preventDefault()
@@ -135,7 +137,7 @@ class App extends Component {
          "Accept": "application/json"
        },
       body: JSON.stringify({
-        name: this.state.formInput,
+        name: this.props.formInput,
         packed: false,
         packing_list_id: listId
       })
@@ -222,10 +224,12 @@ class App extends Component {
 
         < UserContainer userTrails={this.state.userTrails} userLists={this.state.userLists} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
 
-
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return { formInput: state.formInput}
+}
 
-export default App
+export default connect(mapStateToProps, {changeFormInput})(App)
