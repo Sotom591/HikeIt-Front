@@ -13,3 +13,5 @@ const inputFormReducer = (state = {formInput: ''}, action) => {
 };
 
 export default inputFormReducer;
+
+//test
