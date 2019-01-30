@@ -141,6 +141,24 @@ class App extends Component {
     this.props.dispatch(changeListInput(""))
   }
 
+  removeList = (listId) => {
+    let id = parseInt(listId)
+    let token = localStorage.getItem('token')
+    fetch(`http://localhost:3000/packing_lists/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authentication": `Bearer ${token}`
+      }
+    })
+    .then(res => res.json)
+    .then(data => {
+      let newUserLists = this.state.userLists.filter(list => list.id !== id)
+      this.setState({
+        userLists: newUserLists
+      })
+    })
+  }
+
   onItemsFormSubmit = (e) => {
     e.preventDefault()
     let listId = e.currentTarget.id
@@ -223,7 +241,8 @@ class App extends Component {
         }} />
 
         <Route exact path='/lists' render={() => {
-          return < PackListContainer lists={this.state.userLists}  handleSelectedList={this.handleSelectedList} onListFormSubmit={this.onListFormSubmit}/>
+          return < PackListContainer lists={this.state.userLists}  handleSelectedList={this.handleSelectedList} onListFormSubmit={this.onListFormSubmit}
+          removeList={this.removeList}/>
         }} />
 
         <Route exact path='/lists/:id' render={(props) =>

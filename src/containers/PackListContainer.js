@@ -23,13 +23,23 @@ class PackListContainer extends Component {
         <h2 className='pack-header'>Pack For It!</h2>
 
         {this.props.lists.map(list =>
-          <Link to={`/lists/${list.id}`} id='pack-lists'>
-
           <div className="ui bulleted list" >
           <br/>
-          <div className="item" onClick={this.props.handleSelectedList} id={list.id} key={list.id}> {list.title} </div>
+          <div className="item"
+            onClick={this.props.handleSelectedList}
+            id={list.id}
+            key={list.id}>
+            <Link to={`/lists/${list.id}`} id='pack-lists'>
+            {list.title + " "}
+            </Link>
+            <button className='ui compact icon button'
+            onClick={() =>   this.props.removeList(list.id)}>
+            <i className="times icon"/>
+            </button>
           </div>
-          </Link>
+
+          </div>
+
         )}
         <PackListForm onListFormSubmit={this.props.onListFormSubmit}/>
       </div>
