@@ -8,8 +8,6 @@ export default class PackListItems extends Component {
  }
 
   handleCheckBox = () => {
-
-    // console.log(this.props.item.id)
     this.setState({
       packed: !this.state.packed
     })

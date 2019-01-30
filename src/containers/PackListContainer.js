@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PackListForm from '../components/PackListForm'
 
 
 
@@ -19,18 +20,18 @@ class PackListContainer extends Component {
   render(){
     return(
       <div className='pack-container'>
-        <h2>Pack For It!</h2>
+        <h2 className='pack-header'>Pack For It!</h2>
 
         {this.props.lists.map(list =>
+          <Link to={`/lists/${list.id}`} id='pack-lists'>
 
-          <Link to={`/lists/${list.id}`}>
           <div className="ui bulleted list" >
           <div className="item" onClick={this.props.handleSelectedList} id={list.id} key={list.id}> {list.title} </div>
           </div>
           </Link>
-
         )}
-        </div>
+        <PackListForm />
+      </div>
 
     )
   }

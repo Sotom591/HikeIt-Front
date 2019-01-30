@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux'
 import { changeFormInput } from './actions'
-
 import HomeContainer from './containers/HomeContainer'
 import NavBar from './components/NavBar'
 import TrailsContainer from './containers/TrailsContainer'
@@ -25,8 +24,7 @@ class App extends Component {
     userTrails: [],
     userLists: [],
     userItems: [],
-    selectedList: null,
-    // formInput: ""
+    selectedList: null
   }
 
   componentDidMount(){
@@ -118,12 +116,6 @@ class App extends Component {
     })
   }
 
-  // onListFormChange = (e) => {
-  //   this.setState({
-  //     formInput: e.currentTarget.value
-  //   })
-  // }
-
   onFormSubmit = (e) => {
     e.preventDefault()
     let listId = e.currentTarget.id
@@ -151,7 +143,6 @@ class App extends Component {
   }
 
   packChange = (itemId, packed) => {
-    // console.log(itemId, packed)
     let id = parseInt(itemId)
     let token = localStorage.getItem('token')
     fetch(`http://localhost:3000/packing_items/${id}`, {
@@ -181,7 +172,6 @@ class App extends Component {
         "Authentication": `Bearer ${token}`
       }
     })
-
       .then(res => res.json)
       .then(data => {
         let newUserItems = this.state.userItems.filter(item => item.id !== id)
@@ -223,7 +213,6 @@ class App extends Component {
         }} />
 
         < UserContainer userTrails={this.state.userTrails} userLists={this.state.userLists} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
-
       </div>
     );
   }
@@ -232,4 +221,4 @@ const mapStateToProps = (state) => {
   return { formInput: state.formInput}
 }
 
-export default connect(mapStateToProps, {changeFormInput})(App)
+export default withRouter(connect(mapStateToProps)(App))

@@ -6,7 +6,6 @@ import 'react-rater/lib/react-rater.css'
 }
 
 .react-rater-star.is-disabled {
-
   font-size: x-large;
 }
 
@@ -55,10 +54,6 @@ a {
   align-self: center;
 }
 
-/* .ui.menu:not(.vertical) .item {
-  color: #0a7344;
-} */
-
 .user-greeting{
   grid-column-start: 2;
   grid-column-end: 2;
@@ -70,10 +65,6 @@ a {
   font-weight: bold;
 }
 
-.ui.bulleted.list, ul.ui.list {
-  font-size: medium;
-  margin-left: 1.25rem;
-}
 
 #explore-container {
   background-image: url("https://lonelyplanetwp.imgix.net/2018/03/qadisha-valley-lebanon-b1b31d22137d.jpg?fit=min&q=40&sharp=10&vib=20&w=1470");
@@ -105,6 +96,11 @@ a {
   padding: 1%
 }
 
+.ui.bulleted.list, ul.ui.list {
+  font-size: medium;
+  margin-left: 1.25rem;
+}
+
 .pack-container{
   color: #0a7344;
 }
@@ -118,6 +114,7 @@ a {
 .pack-items{
   font-size: medium;
 }
+
 .ui.checkbox{
   min-height: 15px;
   padding: 25px;
@@ -129,7 +126,7 @@ a {
 .ui.compact.icon.button, .ui.compact.icon.buttons .button {
     padding: .10928571em .10928571em .10928571em;
 }
-.pack-input{
+.pack-items-input{
   width: 17%;
   border-radius: 6px;
   max-height: 37px;
@@ -137,30 +134,7 @@ a {
   padding: 12px 20px;
   margin: 8px 5px;
 }
-    /* display: grid;
-    grid-template-rows: 50px 300px 50px;
-    grid-template-columns: 30px auto 30px;
-}
-#list-title{
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 2;
-  grid-column-end: 2;
-}
-.pack-items{
-    display: grid;
-    grid-auto-rows: 10%;
-    grid-auto-columns: 30px auto 30px;
-    grid: display;
-    grid-column-start: 2;
-    grid-column-end: 2;
-}
-.pack-form{
-  grid-row-start: 3;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 2;
-} */
+
 .trails-container{
   color: #0a7344;
 }
@@ -278,22 +252,3 @@ border-color: #0a7344;
   max-height: 225px;
   min-height: 225px;
 }
-/*
-.ui.card, .ui.cards>.card {
-    max-width: 100%;
-    /* position: relative; */
-    /* display: -webkit-box;
-    display: -ms-flexbox; */
-    /* display: grid; */
-    /* -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 290px;
-    min-height: 300px;
-    max-height: 300px;
-    background: #fff;
-    padding: 0px;
-    border: none; */
-    /* border-radius: .28571429rem; */
