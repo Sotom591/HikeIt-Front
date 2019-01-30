@@ -11,7 +11,7 @@ export default class PackListItemsContainer extends Component {
             {this.props.list ? this.props.list.title : null}
           </h3>
           {this.props.items.map(item=> < PackListItems key={item.id} item={item} removeItem={this.props.removeItem} packChange={this.props.packChange} />)}
-          <PackListItemsForm onListFormChange={this.props.onListFormChange} onFormSubmit={this.props.onFormSubmit} list={this.props.list}/>
+          <PackListItemsForm onItemsFormSubmit={this.props.onItemsFormSubmit} list={this.props.list}/>
         </div>
       )
     }

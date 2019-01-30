@@ -26,11 +26,12 @@ class PackListContainer extends Component {
           <Link to={`/lists/${list.id}`} id='pack-lists'>
 
           <div className="ui bulleted list" >
+          <br/>
           <div className="item" onClick={this.props.handleSelectedList} id={list.id} key={list.id}> {list.title} </div>
           </div>
           </Link>
         )}
-        <PackListForm />
+        <PackListForm onListFormSubmit={this.props.onListFormSubmit}/>
       </div>
 
     )

@@ -126,7 +126,7 @@ a {
 .ui.compact.icon.button, .ui.compact.icon.buttons .button {
     padding: .10928571em .10928571em .10928571em;
 }
-.pack-items-input{
+.pack-input{
   width: 17%;
   border-radius: 6px;
   max-height: 37px;

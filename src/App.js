@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Route } from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux'
-import { changeFormInput } from './actions'
+import { changeItemInput, changeListInput } from './actions.js'
 import HomeContainer from './containers/HomeContainer'
 import NavBar from './components/NavBar'
 import TrailsContainer from './containers/TrailsContainer'
@@ -116,11 +116,35 @@ class App extends Component {
     })
   }
 
-  onFormSubmit = (e) => {
+  onListFormSubmit = (e) => {
+    e.preventDefault()
+
+    let token = localStorage.getItem('token')
+    fetch('http://localhost:3000/packing_lists', {
+      method: "POST",
+      headers: {
+        "Authentication": `Bearer ${token}`,
+        "Content-Type": "application/json",
+         "Accept": "application/json"
+       },
+      body: JSON.stringify({
+        title: this.props.lists.listFormInput,
+        user_id: this.state.currentUser.id
+      })
+    })
+    .then(res => res.json())
+    .then(newList => {
+      this.setState({
+        userLists: [...this.state.userLists, newList]
+      })
+    })
+    this.props.dispatch(changeListInput(""))
+  }
+
+  onItemsFormSubmit = (e) => {
     e.preventDefault()
     let listId = e.currentTarget.id
     let token = localStorage.getItem('token')
-    // console.log("submitted", token)
     fetch('http://localhost:3000/packing_items', {
       method: "POST",
       headers: {
@@ -129,7 +153,7 @@ class App extends Component {
          "Accept": "application/json"
        },
       body: JSON.stringify({
-        name: this.props.formInput,
+        name: this.props.items.itemsFormInput,
         packed: false,
         packing_list_id: listId
       })
@@ -140,6 +164,7 @@ class App extends Component {
         userItems: [...this.state.userItems, newItem]
       })
     })
+    this.props.dispatch(changeItemInput(""))
   }
 
   packChange = (itemId, packed) => {
@@ -163,7 +188,6 @@ class App extends Component {
   }
 
   removeItem = (itemId) => {
-    console.log(`removing ${itemId}`)
     let id = parseInt(itemId)
     let token = localStorage.getItem('token')
     fetch(`http://localhost:3000/packing_items/${id}`, {
@@ -199,7 +223,7 @@ class App extends Component {
         }} />
 
         <Route exact path='/lists' render={() => {
-          return < PackListContainer lists={this.state.userLists}  handleSelectedList={this.handleSelectedList}/>
+          return < PackListContainer lists={this.state.userLists}  handleSelectedList={this.handleSelectedList} onListFormSubmit={this.onListFormSubmit}/>
         }} />
 
         <Route exact path='/lists/:id' render={(props) =>
@@ -208,8 +232,7 @@ class App extends Component {
             return < PackListItemsContainer list={this.state.userLists.find(list =>
             list.id === parseInt(listId))}
             items={this.state.userItems.filter(items => items.packing_list_id === parseInt(listId))} packChange={this.packChange}
-            onListFormChange={this.onListFormChange}
-            onFormSubmit={this.onFormSubmit} removeItem={this.removeItem}/>
+            onItemsFormSubmit={this.onItemsFormSubmit} removeItem={this.removeItem}/>
         }} />
 
         < UserContainer userTrails={this.state.userTrails} userLists={this.state.userLists} currentUser={this.state.currentUser} handleSelectedUserTrail={this.handleSelectedUserTrail}/>
@@ -218,7 +241,10 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { formInput: state.formInput}
+  return {
+    items: state.items,
+    lists: state.lists
+    }
 }
 
 export default withRouter(connect(mapStateToProps)(App))
