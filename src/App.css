@@ -185,6 +185,7 @@ a {
   grid-row-end: 3;
   display: grid;
   border-style: solid;
+  border-radius: 8px;
   grid-template-columns: 78% 22%;
 }
 .trail-img{
